@@ -8,8 +8,8 @@ For Mobile Doctor's summer project
 ### 각종 데이터 설명
 https://github.com/Paul-Kim/Mobile_Doctor/wiki/DB-%EC%84%A4%EB%AA%85  
    
-### 이슈 트래킹 - 과제 할당  
-https://github.com/Paul-Kim/Mobile_Doctor/issues  
+### 이슈 트래킹 - 과제. 선점하는 사람이 임자.
+https://github.com/Paul-Kim/Mobile_Doctor/issues  
    
 ### 깃헙을 쓸줄 모른다면?
 https://opentutorials.org/course/2708/15465  
