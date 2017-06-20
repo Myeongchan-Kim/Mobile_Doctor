@@ -6,11 +6,11 @@ For Mobile Doctor's summer project
 이번 여름 기간동안 깃헙을 이용해서 협업을 진행하겠습니다.   
   
 ### 각종 데이터 설명
-https://github.com/Paul-Kim/Mobile_Doctor/wiki  
-  
+https://github.com/Paul-Kim/Mobile_Doctor/wiki/DB-%EC%84%A4%EB%AA%85  
+   
 ### 이슈 트래킹 - 과제 할당  
 https://github.com/Paul-Kim/Mobile_Doctor/issues  
-  
+   
 ### 깃헙을 쓸줄 모른다면?
 https://opentutorials.org/course/2708/15465  
 생활코딩 깃헙 수강하세요. 1~3일정도면 따라 할 수 있을듯 싶네요.  
