@@ -52,81 +52,90 @@ $paging = '<ul>'; // 페이징을 저장할 변수
 
 //첫 페이지가 아니라면 처음 버튼을 생성
 if($page != 1) {
-    $paging .= '<li class="page page_start"><a href="./paging.php?page=1">처음</a></li>';
+    $paging .= '<span class="page page_start"><a href="./paging.php?page=1">처음</a></span>';
 }
 //첫 섹션이 아니라면 이전 버튼을 생성
 if($currentSection != 1) {
-    $paging .= '<li class="page page_prev"><a href="./paging.php?page=' . $prevPage . '">이전</a></li>';
+    $paging .= '<span class="page page_prev"><a href="./paging.php?page=' . $prevPage . '">이전</a></span>';
 }
 
 for($i = $firstPage; $i <= $lastPage; $i++) {
     if($i == $page) {
-        $paging .= '<li class="page current">' . $i . '</li>';
+        $paging .= ' <span class="page current"> ' . $i . ' </span> ';
     } else {
-        $paging .= '<li class="page"><a href="./paging.php?page=' . $i . '">' . $i . '</a></li>';
+        $paging .= ' <span class="page"><a href="./paging.php?page=' . $i . '"> ' . $i . ' </a></span> ';
     }
 }
 
 //마지막 섹션이 아니라면 다음 버튼을 생성
 if($currentSection != $allSection) {
-    $paging .= '<li class="page page_next"><a href="./paging.php?page=' . $nextPage . '">다음</a></li>';
+    $paging .= '<span class="page page_next"><a href="./paging.php?page=' . $nextPage . '"> 다음 </a></span>';
 }
 
 //마지막 페이지가 아니라면 끝 버튼을 생성
 if($page != $allPage) {
-    $paging .= '<li class="page page_end"><a href="./paging.php?page=' . $allPage . '">끝</a></li>';
+    $paging .= '<span class="page page_end"><a href="./paging.php?page=' . $allPage . '"> 끝 </a></span>';
 }
 $paging .= '</ul>';
 
 /* 페이징 끝 */
-$currentLimit = ($onePage * $page) - $onePage; //몇 번째의 글부터 가져오는지
-$sqlLimit = "LIMIT".$onePage."OFFSET".$currentLimit; //limit sql 구문
-
-$sql2 = "select (*) from md_user "."$sqlLimit"; //원하는 개수만큼 가져온다. (0번째부터 20번째까지
-$result2 = mysqli_query($connect,$sql2);
-
+$currentLimit = ($onePage * $page) - $onePage+1000; //몇 번째의 글부터 가져오는지
+$sql2= sprintf( "select user_id from fever.md_user limit %d OFFSET %d", $onePage, $currentLimit); //
+$result2 = mysqli_query($connect, $sql2);
+$num_col = mysqli_num_fields($result2);
+/*echo "<table>";
+while($row = mysqli_fetch_array($result2)) {
+    echo"<tr>";
+    FOR($i = 0; $i < $num_col; $i++)
+        echo "<td align='center'>".$row[$i]."</td>";
+    echo"</tr>";
+}
+echo"</table>";*/
+static $number=1;
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>자유게시판 </title>
+    <title>User게시판 </title>
 </head>
 <body>
-<article class="boardArticle">
-    <h3>자유게시판</h3>
+<article class="boardArticle"><center>
     <div id="boardList">
-        <table>
-            <caption class="readHide">자유게시판</caption>
+        <table border width="600" cellpadding="5" align="center">
+            <caption class="readHide"><h2>User 목록</h2></caption>
             <thead>
             <tr>
                 <th scope="col" class="no">번호</th>
-                <th scope="col" class="id">어플리케이션 User id </th>
+                <th scope="col" class="id">User id </th>
             </tr>
             </thead>
             <tbody>
             <?php
+
             while($row=mysqli_fetch_array($result2))
             {
                 ?>
                 <tr>
-                    <td class="no"><?php echo $row['b_no']?></td>
+                    <td class="no"><center><?php echo $currentLimit+$number?></center></td>
                     <td class="id">
-                        <a href="view.php?bno=<?php echo $row['b_no']?>"><?php echo $row['b_title']?></a>
+                        <center><a href="view.php?user_id=<?php echo $row['user_id']?>"><?php echo $row['user_id']?></center></a>
                     </td>
                 </tr>
                 <?php
+                $number++;
             }
             ?>
             </tbody>
         </table>
-        <div class="btnSet">
+        <?php /*<div class="btnSet">
             <a href="./write.php" class="btnWrite btn">글쓰기</a>
         </div>
-        <div class="paging">
+        <div class="paging">*/
+            ?>
             <?php echo $paging ?>
         </div>
     </div>
-</article>
+    </center></article>
 </body>
 </html>
