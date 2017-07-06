@@ -100,6 +100,7 @@ static $number=1;
     <title>User게시판 </title>
 </head>
 <body>
+<br><br><br><br><br><br><br><br>
 <article class="boardArticle"><center>
     <div id="boardList">
         <table border width="600" cellpadding="5" align="center">
