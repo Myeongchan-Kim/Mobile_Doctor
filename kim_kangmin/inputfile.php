@@ -1,7 +1,7 @@
 <html>
 <body>
 <form action="Real.php" Method="POST">
-      <center><h1>Please input your data <br>(Aid number , start timerange, end timerange)</h1><br></center>
+  <center>Please input your data (Aid number , start timerange, end timerange)<br></center>
       <center><input type="text" name="passdata">
       <select Name="timerange">
           <option value = "selected">Start time</option>
@@ -45,3 +45,12 @@
 </form>
 </body>
 </html>
+
+<?php
+/**
+ * Created by PhpStorm.
+ * User: MobileDoctor
+ * Date: 2017-06-22
+ * Time: 오후 3:28
+ */
+?>

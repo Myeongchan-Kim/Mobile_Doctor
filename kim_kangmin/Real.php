@@ -37,8 +37,14 @@ while($data = mysqli_fetch_array($result)) {
 }*/
 $query =sprintf("select Aid,baby_id,fever,fever.Fever.date from fever.Fever where fever > 0 and Aid = '%s' and fever.Fever.date 
 between '%s' AND '%s' /*order by fever.Fever.date DESC*/;", $Aid_number, $startday, $endday);
-
+$list=10;
+$block=3;
 $result2 = mysqli_query($connect,$query);
+/*$num=mysqli_num_rows($result2);
+$pagenum=ceil($num/$list);
+$blocknum=ceil($pagenum/$block);
+$nowblock=ceil($page);*/
+
 $num_col = mysqli_num_fields($result2);
 echo "<center><h1>Fever Data</h1></center>";
 echo "<table border width=\"700\" cellpadding=\"5\" align=\"center\">";
