@@ -79,7 +79,7 @@ if($page != $allPage) {
 $paging .= '</ul>';
 
 /* 페이징 끝 */
-$currentLimit = ($onePage * $page) - $onePage+1000; //몇 번째의 글부터 가져오는지
+$currentLimit = ($onePage * $page) - $onePage; //몇 번째의 글부터 가져오는지
 $sql2= sprintf( "select user_id from fever.md_user limit %d OFFSET %d", $onePage, $currentLimit); //
 $result2 = mysqli_query($connect, $sql2);
 $num_col = mysqli_num_fields($result2);

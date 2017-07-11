@@ -21,7 +21,7 @@ while ($row = mysqli_fetch_array($result2)){
     }
 }
 
-$sql2= sprintf( "select name, birthday, gender, weight, sensing_gaps from fever.fever_baby where fever.fever_baby.user_id = %d",$s[3]); //
+$sql2= sprintf( "select name, birthday, gender, weight, sensing_gaps, fever_baby._id from fever.fever_baby where fever.fever_baby.user_id = %d",$s[3]); //
 $result3 = mysqli_query($connect, $sql2);
 $num_col2 = mysqli_num_fields($result3);
 $s2=array();
@@ -48,7 +48,7 @@ $t=$j+1;
     <tr>
         <th scope="row" class="id">이름</th>
         <?php for($i=0;$i<$j;$i++){
-            echo "<td align = 'center'>".$s2[$i][0]."</td>";
+            echo "<td align = 'center'><a href='view2.php?babyid= ".$s2[$i][5]."'>".$s2[$i][0]."</a></td>";
          }?>
     </tr>
     <tr>

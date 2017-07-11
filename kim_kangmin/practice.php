@@ -173,9 +173,9 @@ for($i=0;$i<$j;$i++){
 }
 */
 ///////////////////////////////////////////////////////
-///2. type (3) 의 경우 - Test4 table 만들기(._id 때문에)
-$typ3val=array();
-$query1=sprintf("Select fever_baby._id, fever_baby.user_id,Fever.event_case, Fever.date, Fever.baby_id from fever.md_user Join fever.Fever on fever_baby.AID = Fever.Aid and fever_baby.baby_id = Fever.baby_id") ;
+///2. type (3) 의 경우 - Test5 table 만들기
+/*$typ3val=array();
+$query1=sprintf("Select fever_baby._id, fever_baby.baby_id, fever_baby.user_id,Fever.event_case, Fever.date, Fever.baby_id from fever.fever_baby Join fever.Fever on fever_baby.AID = Fever.Aid ") ;
 $result2 = mysqli_query($connect,$query1);
 $num_col = mysqli_num_fields($result2);
 static $j=0;
@@ -188,11 +188,83 @@ while($row = mysqli_fetch_array($result2)){
     echo "<br>";
 
 }
-/*
+
+
 for($i=0;$i<$j;$i++){
-    $query2=sprintf("insert into Test3 (column_1, column_2, fever, Test3.date, babyid) values (%d,'%s',%f,'%s',%d)",$Test3val[$i][0],$Test3val[$i][1],$Test3val[$i][2],$Test3val[$i][3],$Test3val[$i][4]);
+    $query2=sprintf("insert into Test5 (feverbabyid, feverbabybabyid, feverbabyuserid, Fevereventcase, Feverdate, babyid) values (%d,%d,%d,'%s','%s',%d)",$typ3val[$i][0],$typ3val[$i][1],$typ3val[$i][2],$typ3val[$i][3],$typ3val[$i][4],$typ3val[$i][5]);
     $result3 = mysqli_query($connect,$query2);
 }*/
+/*$query2=sprintf("delete feverbabybabyid from Test5 where Fevereventcase = '<br /><b>Notice</b>'");
+$result3 = mysqli_query($connect,$query2);*/
+/////////////////////Test5를 md_data에 넣는 과정
+/*
+$Test5val1=array();
+$Test5val2=array();
+$query1=sprintf("Select Test5.feverbabyid, Test5.Fevereventcase, Test5.Feverdate from Test5 ") ;
+$result2 = mysqli_query($connect,$query1);
+$num_col = mysqli_num_fields($result2);
+static $j=0;
+while($row = mysqli_fetch_array($result2)){
+    for ($i=0;$i<$num_col;$i++){
+        $Test5val1[$j][$i]=$row[$i];
+        if($i==2){
+            $Test5val2[$j]=date('Y-m-d H:i:s',strtotime($row[$i]));
+        }
+    }
+    $j++;
+
+}
+
+for($i=0;$i<$j;$i++) {
+    $query2 = sprintf("insert into md_data (baby_id, app_code, type, data_1, date) values (%d,100,3,'%s','%s')", $Test5val1[$i][0], $Test5val1[$i][1], $Test5val2[$i]);
+    $result3 = mysqli_query($connect, $query2);
+}
+*/
+////////////////////////////////////////////type(3) 완료!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+////////////////type (4) 의 경우 - 구민이가 함
+////////////////type (5) 의 경우 - Test6 만들기
+/*$typ3val=array();
+$query1=sprintf("Select fever_baby._id, fever_baby.baby_id, fever_baby.AID, Report.start_date, Report.end_date, Report.baby_id from fever.fever_baby Join fever.Report on fever_baby.AID = Report.Aid ") ;
+$result2 = mysqli_query($connect,$query1);
+$num_col = mysqli_num_fields($result2);
+static $j=0;
+while($row = mysqli_fetch_array($result2)){
+    for ($i=0;$i<$num_col;$i++){
+        $typ3val[$j][$i]=$row[$i];
+    }
+    $j++;
+
+}
+
+for($i=0;$i<$j;$i++){
+    $query2=sprintf("insert into Test6 (id, baby_id, Aid, startday, endday, Reportbabyid) values (%d,%d,'%s','%s','%s',%d)",$typ3val[$i][0],$typ3val[$i][1],$typ3val[$i][2],$typ3val[$i][3],$typ3val[$i][4],$typ3val[$i][5]);
+    $result3 = mysqli_query($connect,$query2);
+}*/
+
+//$query4=sprintf("delete from Test6 where baby_id != Reportbabyid ");
+//$result5 = mysqli_query($connect,$query4);
+//$query4=sprintf("delete from Test6");
+//$result5 = mysqli_query($connect,$query4);
+
+
+/////////////////////Test6를 md_data에 넣는 과정
+/*
+$Test5val1=array();
+$query1=sprintf("Select Test6.id, Test6.startday, Test6.endday from Test6 ") ;
+$result2 = mysqli_query($connect,$query1);
+$num_col = mysqli_num_fields($result2);
+static $j=0;
+while($row = mysqli_fetch_array($result2)){
+    for ($i=0;$i<$num_col;$i++){
+        $Test5val1[$j][$i]=$row[$i];
+    }
+    $j++;
+}
+for($i=0;$i<$j;$i++) {
+    $query2 = sprintf("insert into md_data (baby_id, app_code, type, data_1, data_2, data_3) values (%d,100,5,'%s','%s','sdfsdf')", $Test5val1[$i][0], $Test5val1[$i][1], $Test5val1[$i][2]);
+    $result3 = mysqli_query($connect, $query2);
+}*/
+
 
 /*
 $query1=sprintf("delete from Test3 where fever<0 ") ;

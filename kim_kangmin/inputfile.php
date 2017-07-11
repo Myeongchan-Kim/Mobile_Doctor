@@ -1,7 +1,7 @@
 <html>
 <body>
 <form action="Real.php" Method="POST">
-      <center><h1>Please input your data <br>(Aid number , start timerange, end timerange)</h1><br></center>
+      <center><h1>Please input your data <br>(User_id , start timerange, end timerange)</h1><br></center>
       <center><input type="text" name="passdata">
       <select Name="timerange">
           <option value = "selected">Start time</option>
